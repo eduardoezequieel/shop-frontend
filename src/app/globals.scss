@@ -1,9 +1,13 @@
-@import "components/input";
+@import "components/input", "mixins";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 a {
@@ -19,4 +23,16 @@ h6,
 span,
 p {
   font-family: "Inter", sans-serif;
+}
+
+.registerLink {
+  text-align: center;
+  color: $primary;
+  font-size: 14px;
+  @include transition();
+  cursor: pointer;
+
+  &:hover {
+    color: darken($primary, 10%);
+  }
 }

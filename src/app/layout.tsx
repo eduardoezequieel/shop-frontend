@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ConfigProvider } from "antd";
 import { Inter } from "next/font/google";
 import "./globals.scss";
+import "animate.css";
 import { designToken } from "@/helpers";
 
 const inter = Inter({

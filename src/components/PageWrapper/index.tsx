@@ -9,7 +9,7 @@ interface Props {
 export const PageWrapper = ({ children, icon, width }: Props) => (
   <div className={styles.container}>
     <div
-      className={styles.formContainer}
+      className={`${styles.formContainer} animate__animated animate__fadeInRight animate__faster`}
       style={{
         width: width || "100%",
       }}

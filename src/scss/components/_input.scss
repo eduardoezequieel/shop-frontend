@@ -1,11 +1,12 @@
 @import "variables";
 
 .inputGroup {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif !important;
   position: relative;
 }
 
-.inputGroup input {
+.inputGroup input,
+.inputGroup textarea {
   font-size: 14px;
   padding: 1em;
   outline: none;
@@ -14,6 +15,8 @@
   border-radius: 20px;
   width: 100%;
   transition: all 0.3s ease;
+  resize: none;
+  font-family: "Inter", sans-serif !important;
 }
 
 .inputGroup label {
@@ -28,7 +31,9 @@
   color: rgb(100, 100, 100);
 }
 
-.inputGroup :is(input:focus, input:valid) ~ label {
+.inputGroup
+  :is(input:focus, input:valid, textarea:focus, textarea:valid)
+  ~ label {
   transform: translateY(-65%) scale(0.9);
   margin: 0em;
   margin-left: 1.3em;
@@ -38,6 +43,6 @@
   color: $primary;
 }
 
-.inputGroup :is(input:focus, input:valid) {
+.inputGroup :is(input:focus, input:valid, textarea:focus, textarea:valid) {
   border-color: $primary;
 }
