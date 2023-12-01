@@ -1,0 +1,19 @@
+@import "variables", "mixins";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.registerLink {
+  text-align: center;
+  color: $primary;
+  font-size: 14px;
+  @include transition();
+  cursor: pointer;
+
+  &:hover {
+    color: darken($primary, 10%);
+  }
+}

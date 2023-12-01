@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import { ConfigProvider } from "antd";
+import { Inter } from "next/font/google";
+import "./globals.scss";
+import { designToken } from "@/helpers";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,8 +20,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={inter.className}>
+      <body>
+        <ConfigProvider
+          theme={{
+            token: {
+              ...designToken,
+            },
+          }}
+        >
+          {children}
+        </ConfigProvider>
+      </body>
     </html>
   );
 }
