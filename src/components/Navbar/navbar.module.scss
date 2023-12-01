@@ -1,0 +1,21 @@
+.navbar {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+
+  .startSection {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .endSection {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  padding: 20px 40px;
+}
