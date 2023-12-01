@@ -6,18 +6,16 @@ interface Props {
   width?: string;
 }
 
-export const PageWrapper = ({ children, icon, width }: Props) => {
-  return (
-    <div className={styles.container}>
-      <div
-        className={styles.formContainer}
-        style={{
-          width: width || "100%",
-        }}
-      >
-        <div className={styles.iconContainer}>{icon}</div>
-        {children}
-      </div>
+export const PageWrapper = ({ children, icon, width }: Props) => (
+  <div className={styles.container}>
+    <div
+      className={styles.formContainer}
+      style={{
+        width: width || "100%",
+      }}
+    >
+      <div className={styles.iconContainer}>{icon}</div>
+      {children}
     </div>
-  );
-};
+  </div>
+);
