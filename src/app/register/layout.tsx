@@ -1,5 +1,11 @@
 import { PageWrapper } from "@/components";
 import { UserAddOutlined } from "@ant-design/icons";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Register | Shop",
+  description: "Create a new account",
+};
 
 const RegisterLayout = ({ children }: { children: React.ReactNode }) => (
   <PageWrapper

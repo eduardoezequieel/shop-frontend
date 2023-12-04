@@ -1,13 +1,14 @@
-import { Button } from "antd";
+"use client";
+
+import { Button, Dropdown, Spin } from "antd";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import styles from "./navbar.module.scss";
 import Link from "next/link";
-import { useShopStore } from "@/app/shop/store";
-import { useRouter } from "next/navigation";
+import { useNavbar } from "./hooks";
 
 export const Navbar = () => {
-  const { toggleCart } = useShopStore();
-  const { replace } = useRouter();
+  const { isLoading, id, user, items, push, toggleCart } = useNavbar();
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.startSection}>
@@ -15,22 +16,37 @@ export const Navbar = () => {
           <h3>The Shop</h3>
         </Link>
       </div>
-      <div className={styles.endSection}>
-        <form>
-          <div className="inputGroup">
-            <input type="text" required autoComplete="off" />
-            <label>Search</label>
-          </div>
-        </form>
-        <Button type="text" onClick={() => replace("/login")}>
-          <UserOutlined />
-          Account
-        </Button>
-        <Button type="text" onClick={toggleCart}>
-          <ShoppingCartOutlined />
-          Cart
-        </Button>
-      </div>
+      {isLoading ? (
+        <Spin />
+      ) : (
+        <div className={styles.endSection}>
+          {!id && (
+            <form>
+              <div className="inputGroup">
+                <input type="text" required autoComplete="off" />
+                <label>Search</label>
+              </div>
+            </form>
+          )}
+          {user ? (
+            <Dropdown menu={{ items }} trigger={["click"]}>
+              <Button type="text">
+                <UserOutlined />
+                {user.username}
+              </Button>
+            </Dropdown>
+          ) : (
+            <Button type="text" onClick={() => push("/login")}>
+              <UserOutlined />
+              Account
+            </Button>
+          )}
+          <Button type="text" onClick={toggleCart}>
+            <ShoppingCartOutlined />
+            Cart
+          </Button>
+        </div>
+      )}
     </nav>
   );
 };

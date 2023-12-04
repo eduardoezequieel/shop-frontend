@@ -46,3 +46,26 @@
 .inputGroup :is(input:focus, input:valid, textarea:focus, textarea:valid) {
   border-color: $primary;
 }
+
+.inputGroup.error
+  :is(input:focus, input:valid, textarea:focus, textarea:valid)
+  ~ label {
+  transform: translateY(-65%) scale(0.9);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding-inline: 3px;
+  padding-block: 0px;
+  background-color: white;
+  color: $danger;
+}
+
+.inputGroup.error
+  :is(input:focus, input:valid, textarea:focus, textarea:valid) {
+  border-color: $danger;
+}
+
+.errorLabel {
+  color: $danger;
+  margin-left: 10px;
+  font-size: 14px;
+}

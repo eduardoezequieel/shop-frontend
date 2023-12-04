@@ -7,6 +7,8 @@ import "animate.css";
 import { designToken } from "@/utils";
 import { Notification } from "@/components";
 import { useNotificationStore } from "@/store";
+import { useEffect } from "react";
+import { useAuthStore } from "./store";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,6 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const { existsNotification, notificationBody } = useNotificationStore();
+
   return (
     <html lang="en" className={inter.className}>
       <body>

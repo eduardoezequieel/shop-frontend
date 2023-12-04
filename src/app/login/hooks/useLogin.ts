@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export const useLogin = () => {
-  const { login, user } = useAuthStore();
+  const { login, user, register, isLoading } = useAuthStore();
   const router = useRouter();
   const [passwordMode, setPasswordMode] = useState("password");
 
@@ -23,5 +23,5 @@ export const useLogin = () => {
     }
   }, [user]);
 
-  return { passwordMode, togglePasswordMode, login };
+  return { passwordMode, togglePasswordMode, login, register, isLoading };
 };

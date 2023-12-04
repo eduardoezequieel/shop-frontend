@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { ILogin } from "./interfaces";
 
 const LoginPage = () => {
-  const { passwordMode, togglePasswordMode, login } = useLogin();
+  const { passwordMode, togglePasswordMode, login, isLoading } = useLogin();
   const { register, handleSubmit } = useForm<ILogin>();
 
   const onSubmit = (credentials: ILogin) => login(credentials);
@@ -39,7 +39,7 @@ const LoginPage = () => {
           <span className="registerLink">Register</span>
         </Link>
       </div>
-      <Button type="primary" size="large" htmlType="submit">
+      <Button type="primary" size="large" htmlType="submit" loading={isLoading}>
         Log in
       </Button>
     </form>
