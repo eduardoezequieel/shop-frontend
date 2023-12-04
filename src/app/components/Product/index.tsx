@@ -3,8 +3,7 @@ import airpods from "public/resources/airpods.png";
 import styles from "./product.module.scss";
 import Image from "next/image";
 import { StyledPrice } from "..";
-import { trimParagraph } from "@/helpers";
-import Link from "next/link";
+import { trimParagraph } from "@/utils";
 import { useRouter } from "next/navigation";
 
 const text = `
@@ -18,7 +17,6 @@ export const Product = () => {
   const { replace } = useRouter();
   const handleAddToCart = (e: any) => {
     e.stopPropagation();
-    console.log("add to cart");
   };
 
   const handleContainerClick = () => {

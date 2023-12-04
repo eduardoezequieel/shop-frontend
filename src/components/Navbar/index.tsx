@@ -1,9 +1,13 @@
-import { Button, Dropdown, MenuProps } from "antd";
+import { Button } from "antd";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import styles from "./navbar.module.scss";
 import Link from "next/link";
+import { useShopStore } from "@/app/shop/store";
+import { useRouter } from "next/navigation";
 
 export const Navbar = () => {
+  const { toggleCart } = useShopStore();
+  const { replace } = useRouter();
   return (
     <nav className={styles.navbar}>
       <div className={styles.startSection}>
@@ -18,11 +22,11 @@ export const Navbar = () => {
             <label>Search</label>
           </div>
         </form>
-        <Button type="text">
+        <Button type="text" onClick={() => replace("/login")}>
           <UserOutlined />
           Account
         </Button>
-        <Button type="text">
+        <Button type="text" onClick={toggleCart}>
           <ShoppingCartOutlined />
           Cart
         </Button>

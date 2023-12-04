@@ -12,11 +12,16 @@
     "@ant-design/icons": "^5.2.6",
     "animate.css": "^4.1.1",
     "antd": "^5.11.5",
+    "axios": "^1.6.2",
+    "js-cookie": "^3.0.5",
     "next": "14.0.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.48.2",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

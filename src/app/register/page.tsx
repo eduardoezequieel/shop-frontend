@@ -13,6 +13,10 @@ const RegisterPage = () => {
         <label htmlFor="name">Username</label>
       </div>
       <div className="inputGroup">
+        <input type="email" required autoComplete="off" />
+        <label htmlFor="name">Email</label>
+      </div>
+      <div className="inputGroup">
         <input type={passwordMode} required autoComplete="off" />
         <label htmlFor="name">Password</label>
       </div>

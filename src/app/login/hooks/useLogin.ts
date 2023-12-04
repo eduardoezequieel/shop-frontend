@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useAuthStore } from "@/app/store";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export const useLogin = () => {
+  const { login, user } = useAuthStore();
+  const router = useRouter();
   const [passwordMode, setPasswordMode] = useState("password");
 
   const togglePasswordMode = () => {
     setPasswordMode(passwordMode === "password" ? "text" : "password");
   };
 
-  return { passwordMode, togglePasswordMode };
+  useEffect(() => {
+    if (user) {
+      const { role } = user;
+
+      if (role?.id === 3) {
+        router.push("/shop");
+      } else {
+        console.log("admin panel");
+      }
+    }
+  }, [user]);
+
+  return { passwordMode, togglePasswordMode, login };
 };

@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+hr {
+  border: none;
+  border-top: 1px solid #eaeaea;
+}
+
 body {
   overflow-x: hidden;
 }
@@ -35,4 +40,10 @@ p {
   &:hover {
     color: darken($primary, 10%);
   }
+}
+
+.ant-notification-notice-message {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
 }
