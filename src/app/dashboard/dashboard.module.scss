@@ -1,0 +1,13 @@
+.pageWrapper {
+  margin-left: 275px;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: calc(100vh - 40px);
+}

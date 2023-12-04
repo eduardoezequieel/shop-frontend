@@ -1,6 +1,6 @@
 "use client";
 
-import { ProductGrid } from "../components";
+import { ProductGrid } from "./components";
 
 const ShopPage = () => {
   return <ProductGrid />;

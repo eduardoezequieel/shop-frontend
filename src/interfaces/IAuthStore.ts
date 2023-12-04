@@ -1,6 +1,6 @@
 import { IUser } from "@/interfaces";
-import { ILogin } from "../login/interfaces";
-import { IRegister } from "../register/interfaces";
+import { ILogin } from "../app/login/interfaces";
+import { IRegister } from "../app/register/interfaces";
 
 export interface IAuthStore {
   isLoading: boolean;

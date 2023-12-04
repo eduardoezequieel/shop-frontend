@@ -1,7 +1,6 @@
 "use client";
 
-import { Navbar } from "@/components";
-import { Cart } from "../components";
+import { Cart, Navbar } from "./components";
 
 const ShopLayout = ({ children }: { children: React.ReactNode }) => {
   return (

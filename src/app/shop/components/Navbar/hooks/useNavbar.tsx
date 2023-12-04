@@ -1,5 +1,5 @@
 import { useShopStore } from "@/app/shop/store";
-import { useAuthStore } from "@/app/store";
+import { useAuthStore } from "@/store";
 import { MenuProps } from "antd";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect } from "react";

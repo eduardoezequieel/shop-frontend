@@ -7,8 +7,6 @@ import "animate.css";
 import { designToken } from "@/utils";
 import { Notification } from "@/components";
 import { useNotificationStore } from "@/store";
-import { useEffect } from "react";
-import { useAuthStore } from "./store";
 
 const inter = Inter({
   subsets: ["latin"],
