@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { IAuthStore } from "../interfaces";
-import { login, me, register } from ".";
+import { login, logout, me, register } from ".";
 import { useNotificationStore } from "@/store";
 import { JWT_TOKEN } from "@/constants";
 
@@ -22,7 +22,10 @@ export const useAuthStore = create<IAuthStore>((set) => {
 
       set({ isLoading: false });
     },
-    logout: () => set({ user: null }),
+    logout: () => {
+      logout();
+      set({ user: null });
+    },
     register: async (newUser) => {
       set({ isLoading: true });
       const { ok, notificationBody, data } = await register(newUser);

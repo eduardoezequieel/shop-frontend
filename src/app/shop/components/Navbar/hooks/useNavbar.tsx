@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 export const useNavbar = () => {
   const { toggleCart } = useShopStore();
-  const { user, getLoggedUser, isLoading } = useAuthStore();
+  const { user, getLoggedUser, isLoading, logout } = useAuthStore();
   const { push } = useRouter();
   const { id } = useParams();
 
@@ -23,6 +23,7 @@ export const useNavbar = () => {
     {
       label: <span>Log out</span>,
       key: "1",
+      onClick: () => logout(),
     },
   ];
 

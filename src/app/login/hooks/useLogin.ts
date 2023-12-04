@@ -18,7 +18,7 @@ export const useLogin = () => {
       if (role?.id === 3) {
         router.push("/shop");
       } else {
-        console.log("admin panel");
+        router.push("/dashboard");
       }
     }
   }, [user]);

@@ -1,10 +1,9 @@
 import Cookies from "js-cookie";
 import { getAxiosInstance } from "@/constants";
-import { ILogin, ILoginResponse } from "../login/interfaces";
 import { HttpResponse, IUser } from "@/interfaces";
 import { AxiosError } from "axios";
-import { IRegister } from "../register/interfaces";
-
+import { ILogin, ILoginResponse } from "@/app/login/interfaces";
+import { IRegister } from "@/app/register/interfaces";
 const http = getAxiosInstance();
 
 export const me = async (): Promise<HttpResponse<IUser>> => {
@@ -32,6 +31,11 @@ export const me = async (): Promise<HttpResponse<IUser>> => {
   }
 };
 
+export const logout = () => {
+  Cookies.remove("jwtShopToken");
+  Cookies.remove("jwtShopTokenRole");
+};
+
 export const login = async (
   credentials: ILogin
 ): Promise<HttpResponse<IUser>> => {
@@ -43,6 +47,8 @@ export const login = async (
 
     Cookies.set("jwtShopToken", data.jwt);
     const { data: user } = await me();
+
+    Cookies.set("jwtShopTokenRole", JSON.stringify(user!.role));
 
     return {
       ok: true,
