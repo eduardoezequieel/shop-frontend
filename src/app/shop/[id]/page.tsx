@@ -8,9 +8,17 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useSelectedProductPage } from "./hooks";
 import { BACKEND_URL } from "@/constants";
 import { Image as IImage } from "@/interfaces";
+import { useShopStore } from "../store";
+import { useParams } from "next/navigation";
 
 const SelectedProductPage = () => {
   const { selectedProduct } = useSelectedProductPage();
+  const { addToCart } = useShopStore();
+  const { id } = useParams();
+
+  const handleAddToCart = () => {
+    addToCart(Number(id));
+  };
 
   return (
     <div className={styles.container}>
@@ -38,7 +46,7 @@ const SelectedProductPage = () => {
         <div>
           <p>{selectedProduct?.description}</p>
         </div>
-        <Button type="dashed" size="large" block>
+        <Button type="dashed" size="large" block onClick={handleAddToCart}>
           <ShoppingCartOutlined />
           Add to cart
         </Button>

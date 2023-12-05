@@ -8,11 +8,15 @@ import { useRouter } from "next/navigation";
 import { IProduct } from "@/app/dashboard/products/interfaces";
 import { Image as IImage } from "@/interfaces";
 import { BACKEND_URL } from "@/constants";
+import { useShopStore } from "../../store";
 
 export const Product = ({ name, description, price, id, image }: IProduct) => {
   const { replace } = useRouter();
+  const { addToCart } = useShopStore();
   const handleAddToCart = (e: any) => {
     e.stopPropagation();
+
+    addToCart(id);
   };
 
   const handleContainerClick = () => {

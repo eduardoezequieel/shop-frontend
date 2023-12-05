@@ -3,8 +3,19 @@ import styles from "./cartItem.module.scss";
 import airpods from "public/resources/airpods.png";
 import { Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
+import { useShopStore } from "../../store";
+import { IProduct } from "@/app/dashboard/products/interfaces";
+import { usePathname } from "next/navigation";
 
-export const CartItem = () => {
+export const CartItem = ({ name, price, id }: IProduct) => {
+  const { deleteFromCart } = useShopStore();
+  const pathname = usePathname();
+
+  console.log(pathname);
+
+  const handleDeleteFromCart = () => {
+    deleteFromCart(id);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
@@ -12,13 +23,15 @@ export const CartItem = () => {
           <Image src={airpods} alt="item" />
         </div>
         <div className={styles.itemInfo}>
-          <h3>Product Name</h3>
-          <p>$9.99</p>
+          <h3>{name}</h3>
+          <p>${price.toFixed(2)}</p>
         </div>
       </div>
-      <Button type="text">
-        <DeleteOutlined style={{ fontSize: "24px", color: "red" }} />
-      </Button>
+      {pathname !== "/shop/orders" && (
+        <Button type="text" onClick={handleDeleteFromCart}>
+          <DeleteOutlined style={{ fontSize: "24px", color: "red" }} />
+        </Button>
+      )}
     </div>
   );
 };

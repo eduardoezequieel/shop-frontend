@@ -5,9 +5,11 @@ import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import styles from "./navbar.module.scss";
 import Link from "next/link";
 import { useNavbar } from "./hooks";
+import { useShopStore } from "../../store";
 
 export const Navbar = () => {
   const { isLoading, user, items, push, toggleCart } = useNavbar();
+  const { cart } = useShopStore();
 
   return (
     <nav className={styles.navbar}>
@@ -36,6 +38,9 @@ export const Navbar = () => {
           <Button type="text" onClick={toggleCart}>
             <ShoppingCartOutlined />
             Cart
+            {cart.length > 0 && (
+              <span className={styles.cartCount}>{cart.length}</span>
+            )}
           </Button>
         </div>
       )}
