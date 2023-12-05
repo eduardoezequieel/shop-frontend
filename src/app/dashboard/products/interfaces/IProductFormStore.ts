@@ -1,10 +1,9 @@
 type ModalMode = "add" | "edit";
 
-export interface IProductForm {
+export interface IProductFormStore {
   isModalOpen: boolean;
-  isLoading: boolean;
   modalTitle: string;
   modalMode: ModalMode;
-  openModal: (mode: ModalMode, title: string) => void;
+  openModal: (mode: ModalMode, title: string, id?: number) => void;
   closeModal: () => void;
 }

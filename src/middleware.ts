@@ -8,7 +8,6 @@ export async function middleware(req: NextRequest) {
   const role = JSON.parse(
     req.cookies.get("jwtShopTokenRole")?.value || "{}"
   ) as IRole;
-  console.log(role.id);
 
   if (req.nextUrl.pathname === "/") {
     return NextResponse.redirect(new URL("/shop", req.url));

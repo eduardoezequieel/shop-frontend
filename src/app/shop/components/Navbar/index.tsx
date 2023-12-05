@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useNavbar } from "./hooks";
 
 export const Navbar = () => {
-  const { isLoading, id, user, items, push, toggleCart } = useNavbar();
+  const { isLoading, user, items, push, toggleCart } = useNavbar();
 
   return (
     <nav className={styles.navbar}>
@@ -20,14 +20,6 @@ export const Navbar = () => {
         <Spin />
       ) : (
         <div className={styles.endSection}>
-          {!id && (
-            <form>
-              <div className="inputGroup">
-                <input type="text" required autoComplete="off" />
-                <label>Search</label>
-              </div>
-            </form>
-          )}
           {user ? (
             <Dropdown menu={{ items }} trigger={["click"]}>
               <Button type="text">

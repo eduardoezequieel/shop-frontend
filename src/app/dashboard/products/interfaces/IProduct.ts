@@ -8,5 +8,5 @@ export interface IProduct {
   publishedAt: string;
   description: string;
   price: number;
-  image: Image;
+  image: Image | File;
 }

@@ -1,3 +1,12 @@
 .form {
-  padding-block: 20px;
+  padding-block: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .innerContainer {
+    display: flex;
+    gap: 12px;
+    height: fit-content;
+  }
 }

@@ -8,7 +8,6 @@ export const useNavbar = () => {
   const { toggleCart } = useShopStore();
   const { user, getLoggedUser, isLoading, logout } = useAuthStore();
   const { push } = useRouter();
-  const { id } = useParams();
 
   useEffect(() => {
     getLoggedUser();
@@ -32,7 +31,6 @@ export const useNavbar = () => {
     user,
     isLoading,
     push,
-    id,
     items,
   };
 };

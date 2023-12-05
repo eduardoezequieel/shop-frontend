@@ -1,10 +1,43 @@
 import Cookies from "js-cookie";
 import { getAxiosInstance } from "@/constants";
-import { HttpResponse, IUser } from "@/interfaces";
+import { HttpResponse, IUser, Image } from "@/interfaces";
 import { AxiosError } from "axios";
 import { ILogin, ILoginResponse } from "@/app/login/interfaces";
 import { IRegister } from "@/app/register/interfaces";
+
 const http = getAxiosInstance();
+
+export const uploadFile = async (file: File): Promise<HttpResponse<Image>> => {
+  try {
+    const formData = new FormData();
+    formData.append("files", file);
+
+    const { data } = await http.post<Image[]>("api/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    return {
+      ok: true,
+      data: data[0],
+    };
+  } catch (error) {
+    let errorMessage = "Something went wrong. Contact the administrator.";
+    if (error instanceof AxiosError) {
+      errorMessage = error.response?.data?.error?.message || errorMessage;
+    }
+
+    return {
+      ok: false,
+      notificationBody: {
+        type: "error",
+        message: "Error",
+        description: errorMessage,
+      },
+    };
+  }
+};
 
 export const me = async (): Promise<HttpResponse<IUser>> => {
   try {
